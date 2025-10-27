@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function SignInPage() {
   const [armyNumber, setArmyNumber] = useState("");
@@ -67,7 +68,7 @@ export default function SignInPage() {
 
           <h2 className="text-2xl font-semibold mb-2">Sign in</h2>
           <p className="text-gray-500 mb-6 text-sm">
-            Sign in with your Army number and Tier number to gain access
+            Sign in with your Army number
           </p>
 
           {/* Form */}
@@ -115,12 +116,12 @@ export default function SignInPage() {
             <div className="text-sm text-center mt-4">
             <p className="text-gray-600">
               Don’t have an account?{" "}
-              <a
-               href="/Signup link"
+              <Link
+               to="/signup"
                 className="text-gray-900 font-semibold hover:underline"
              >
                 Sign up
-    </a>
+    </Link>
   </p>
 </div>
 

@@ -1,5 +1,5 @@
 import React from "react"; 
-// import nafcImage from "../images/nafc-image.jpg";
+import nafcImage from "../assets/images/nafc-image.jpg";
 
 const Signup = () => {
   return (
@@ -8,9 +8,9 @@ const Signup = () => {
         {/* Left Side - Image */}
         <div className="w-1/2 relative">
           <img
-            // src="nafc_app\src\images\nafc-image.jpg" 
+            src={nafcImage}
             alt="NAFC"
-            className="h-full w-full object-cover"
+            className="h-full w-96 object-cover"
           />
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
             {[1, 2, 3, 4].map((_, i) => (
@@ -87,7 +87,7 @@ const Signup = () => {
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 />
               </div>
-              <div className="w-1/2">
+              {/* <div className="w-1/2">
                 <label className="block text-gray-600 text-sm mb-1">
                   Army Number
                 </label>
@@ -96,7 +96,7 @@ const Signup = () => {
                   placeholder="Enter ID / Tier number"
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 />
-              </div>
+              </div> */}
             </div>
 
             <div>
