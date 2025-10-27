@@ -2,6 +2,7 @@ from flask import Flask
 from flask_pymongo import PyMongo
 from dotenv import load_dotenv
 from flask_jwt_extended import JWTManager
+from flask_bcrypt import Bcrypt
 import os
 from flask_cors import CORS
 
@@ -9,6 +10,7 @@ load_dotenv()
 
 mongo = PyMongo()
 jwt = JWTManager()
+bcrypt = Bcrypt()
 
 
 def create_app():
@@ -18,6 +20,7 @@ def create_app():
     flask_app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
 
     CORS(flask_app, origins=["*"])
+    bcrypt.init_app(flask_app)
 
     @flask_app.route('/')
     def home():
@@ -26,8 +29,8 @@ def create_app():
     mongo.init_app(flask_app)
     jwt.init_app(flask_app)
 
-    from app.auth import auth as auth_blueprint
-    flask_app.register_blueprint(auth_blueprint, url_prefix='/auth')
+    from app.auth import auth_bp as auth_blueprint
+    flask_app.register_blueprint(auth_blueprint, url_prefix='/api')
 
     # Check mongo db connections
     try:
