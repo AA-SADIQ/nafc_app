@@ -1,5 +1,6 @@
-import React from "react"; 
+import React, { useState } from "react";
 import nafcImage from "../assets/images/nafc-image.jpg";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   return (
@@ -29,19 +30,26 @@ const Signup = () => {
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-2xl font-semibold text-gray-800">Sign up</h2>
             <div className="text-sm text-gray-600">
-              Already have an account?{" "}
-              <button className="text-blue-600 hover:underline">Login</button>
+                 Already have an account?{" "}
+            <Link 
+            to="/" 
+             className="text-blue-600 hover:underline"
+             >
+              Login
+            </Link>
             </div>
+
           </div>
 
           <h3 className="text-xl font-semibold mb-4 text-gray-800">
-            Sign up to access
+            Signup to access
           </h3>
           <p className="text-gray-500 text-sm mb-6">
-            Sign up with your Google account or use the form below.
+            Use the form below.
           </p>
 
           <form className="space-y-4">
+            {/* Name Fields */}
             <div className="flex gap-4">
               <div className="w-1/2">
                 <label className="block text-gray-600 text-sm mb-1">
@@ -87,48 +95,14 @@ const Signup = () => {
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 />
               </div>
-              {/* <div className="w-1/2">
-                <label className="block text-gray-600 text-sm mb-1">
-                  Army Number
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter ID / Tier number"
-                  className="w-full border border-gray-300 rounded-md px-3 py-2"
-                />
-              </div> */}
             </div>
 
-            <div>
-              <label className="block text-gray-600 text-sm mb-1">
-                Department
-              </label>
-              <select className="w-full border border-gray-300 rounded-md px-3 py-2">
-                <option>Select department</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-gray-600 text-sm mb-1">Region</label>
-              <select className="w-full border border-gray-300 rounded-md px-3 py-2">
-                <option>Select region</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-gray-600 text-sm mb-1">
-                Type of work assigned
-              </label>
-              <select className="w-full border border-gray-300 rounded-md px-3 py-2">
-                <option>Select type</option>
-              </select>
-            </div>
-
+            {/* Submit Button */}
             <button
               type="submit"
               className="w-full bg-green-700 text-white py-2 rounded-md hover:bg-green-800 mt-4"
             >
-              Add Staff
+              Add User
             </button>
           </form>
         </div>
