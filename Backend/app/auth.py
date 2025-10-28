@@ -87,3 +87,38 @@ def register():
 
     except Exception as e:
         return jsonify({"msg": "Error creating user", "error": str(e)}), 500
+
+
+@auth_bp.route('/login', methods=['POST'])
+def login():
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"msg": "Invalid Credentials"}), 400
+
+        email = data.get('email')
+        password = data.get('password')
+
+        if not email or not password:
+            return jsonify({"msg": "Email and password are required"}), 400
+
+        user = mongo.db.users.find_one({'email': email})
+
+        if not user or not bcrypt.check_password_hash(user['password'], password):
+            return jsonify({"msg": "Invalid email or password"}), 401
+
+        # Remove the password before sending response
+        user.pop('password', None)
+        user['_id'] = str(user['_id'])
+
+        access_token = create_access_token(
+            identity=email, expires_delta=timedelta(hours=1))
+
+        return jsonify({
+            "msg": "Login successful",
+            "user_data": user,
+            "access_token": access_token
+        }), 200
+
+    except Exception as e:
+        return jsonify({"msg": "Error during login", "error": str(e)}), 500
